@@ -107,10 +107,10 @@
   <div id="app" class="min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="bg-white/70 backdrop-blur-md p-4 border-b border-gray-200 sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-md p-4 border-b border-gray-200 sticky top-0 z-40">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-3">
-          <video src="WhatsApp Video 2025-08-24 at 18.46.48_f0c28a93.mp4" class="h-10 w-10" autoplay muted loop playsinline></video>
+          <video src="WhatsApp Video 2025-08-24 at 18.46.48_f0c28a93.mp4" alt="Pragati Logo" class="h-10 w-10 border border-green-500" autoplay loop muted></video>
           <h1 class="text-2xl font-bold text-gray-800">प्रगति | PRAGATI</h1>
         </div>
         <div id="header-actions" class="hidden items-center space-x-5">
@@ -126,8 +126,8 @@
       <!-- Welcome/Login Screen -->
       <div id="loginScreen" class="max-w-md w-full mx-auto card my-auto">
         <div class="text-center mb-8">
-          <video src="WhatsApp Video 2025-08-24 at 18.46.48_f0c28a93.mp4" class="h-48 w-48 mx-auto mb-4" autoplay muted loop playsinline></video>
-          <h2 class="text-3xl font-bold text-gray-800">प्रगति| PRAGATI </h2>
+        <video src="WhatsApp Video 2025-08-24 at 18.46.48_f0c28a93.mp4" alt="Pragati Logo" class="h-24 w-24 mx-auto mb-4 border-2 border-green-500 rounded-lg" autoplay loop muted></video>
+          <h2 class="text-3xl font-bold text-gray-800">प्रगति | PRAGATI</h2>
           <p class="text-gray-600 mt-2 font-semibold text-lg">Right काम, Right Pay</p>
         </div>
 
@@ -276,7 +276,7 @@
             <div class="card flex flex-col h-[80vh]">
                 <div class="flex items-center mb-4">
                     <button id="backFromChatbotBtn" class="btn btn-secondary mr-4"><i class="fas fa-arrow-left"></i></button>
-                    <h2 class="text-2xl font-bold text-gray-800 flex items-center"><i class="fas fa-robot text-green-500 mr-3"></i>AI SATHI</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 flex items-center"><i class="fas fa-robot text-green-500 mr-3"></i>AI Assistant</h2>
                 </div>
                 <div id="chatMessages" class="flex-grow bg-gray-100 rounded-lg p-4 overflow-y-auto space-y-4">
                     <!-- Chat messages will appear here -->
@@ -303,7 +303,7 @@
           </button>
           <button id="chatbotBtn" class="nav-btn flex flex-col items-center text-gray-500 hover:text-green-600">
             <i class="fas fa-robot text-xl"></i>
-            <span class="text-xs">AI SATHI</span>
+            <span class="text-xs">AI Help</span>
           </button>
           <button id="profileFooterBtn" class="nav-btn flex flex-col items-center text-gray-500 hover:text-green-600">
             <i class="fas fa-user-circle text-xl"></i>
@@ -371,12 +371,12 @@
     <script>
     // --- MOCK DATA ---
     const mockWorkers = [
-        { _id: 'w1', name: "Ramesh Kumar", skill: "mason", location: "Patia Chowk", rating: 4.5 },
-        { _id: 'w2', name: "Suresh Singh", skill: "carpenter", location: "Kalinga Nagar", rating: 4.2 },
-        { _id: 'w3', name: "Mahesh Sahu", skill: "painter", location: "Bhubaneswar Station", rating: 4.7 },
-        { _id: 'w4', name: "Ganesh Jena", skill: "plumber", location: "KIIT Square", rating: 4.0 },
-        { _id: 'w5', name: "Dinesh Rout", skill: "mason", location: "Rasulgarh", rating: 4.8 },
-        { _id: 'w6', name: "Anil Pradhan", skill: "electrician", location: "Jaydev Vihar", rating: 4.9 },
+        { _id: 'w1', name: "Ramesh Kumar", skill: "mason", distance: "0.5 km", rating: 4.5 },
+        { _id: 'w2', name: "Suresh Singh", skill: "carpenter", distance: "1.2 km", rating: 4.2 },
+        { _id: 'w3', name: "Mahesh Sahu", skill: "painter", distance: "2.1 km", rating: 4.7 },
+        { _id: 'w4', name: "Ganesh Jena", skill: "plumber", distance: "0.8 km", rating: 4.0 },
+        { _id: 'w5', name: "Dinesh Rout", skill: "mason", distance: "1.5 km", rating: 4.8 },
+        { _id: 'w6', name: "Anil Pradhan", skill: "electrician", distance: "3.2 km", rating: 4.9 },
     ];
 
     const mockJobs = [
@@ -652,7 +652,7 @@
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 appState.workerLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
-                DOMElements.locationStatus.textContent = 'Patia, Bhubaneshwar';
+                DOMElements.locationStatus.textContent = 'Location detected successfully!';
                 DOMElements.locationIcon.classList.remove('animate-pulse', 'text-red-500');
                 DOMElements.locationIcon.classList.add('text-green-500');
                 if (appState.selectedSkill) DOMElements.checkInBtn.disabled = false;
@@ -764,12 +764,19 @@
                 <div class="mr-4 text-2xl w-8 text-center"><i class="fas ${skillInfo.icon} text-green-500"></i></div>
                 <div class="flex-grow">
                     <h4 class="font-semibold text-gray-800">${worker.name}</h4>
-                    <p class="text-sm text-gray-600">${skillInfo.name} - <span class="text-yellow-500">${worker.rating} ★</span></p>
+                    <p class="text-sm text-gray-600">${skillInfo.name} • <span class="font-semibold">${worker.distance}</span></p>
                 </div>
-                <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-600 hover:text-white"><i class="fas fa-phone-alt mr-1"></i> Call</button>
-                <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-600 hover:text-white"><i class="fas fa-bell mr-1"></i> Notify</button>
-                <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-600 hover:text-white"><i class="fas fa-comment-dots mr-1"></i> Message</button>
-           
+                <div class="flex flex-col items-end space-y-1 w-32">
+                    <div class="flex items-center justify-end text-yellow-500">
+                        <span class="font-bold">${worker.rating}</span>
+                        <i class="fas fa-star ml-1"></i>
+                    </div>
+                    <div class="flex flex-wrap gap-1 justify-end">
+                        <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-100 hover:text-green-700 transition"><i class="fas fa-phone-alt mr-1"></i>Call</button>
+                        <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-100 hover:text-green-700 transition"><i class="fas fa-bell mr-1"></i>Notify</button>
+                        <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-100 hover:text-green-700 transition"><i class="fas fa-comment-alt mr-1"></i>Message</button>
+                    </div>
+                </div>
             `;
             DOMElements.workerList.appendChild(workerEl);
         });
@@ -824,7 +831,7 @@
         } catch (error) {
             console.error("Gemini API Error:", error);
             DOMElements.chatMessages.removeChild(thinkingIndicator);
-            addMessageToChat('ai', `<span style="color:#dc2626;font-weight:bold;"><i class="fas fa-exclamation-triangle mr-2"></i> System Error: API Quota Exceeded!</span>`);
+            addMessageToChat('ai', "Sorry, I'm having trouble connecting. Please try again later.");
         }
     }
 
@@ -832,14 +839,14 @@
         chatHistory.push({ role: "user", parts: [{ text: prompt }] });
         const payload = { contents: chatHistory };
         const apiKey = ""; // This will be handled by the environment
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${AIzaSyBdreVFntgd3u6F7zhOZvy0qFqDqQEO9OQ}`;
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
         const response = await fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
-
+  
         if (!response.ok) {
             throw new Error(`API request failed with status ${response.status}`);
         }
@@ -858,3 +865,4 @@
   </div>
 </body>
 </html>
+
