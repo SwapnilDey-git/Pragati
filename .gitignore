@@ -1,0 +1,22 @@
+# Dependencies
+/node_modules
+
+# Environment Variables
+# Contains secret keys for your database and other services.
+# Never commit this file!
+.env
+
+# Firebase Service Account Key
+# This is a highly sensitive private key.
+# Never commit this file!
+serviceAccountKey.json
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
