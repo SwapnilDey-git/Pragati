@@ -107,11 +107,11 @@
   <div id="app" class="min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md p-4 border-b border-gray-200 sticky top-0 z-40">
+    <header class="bg-white/70 backdrop-blur-md p-4 border-b border-gray-200 sticky top-0 z-40">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-3">
           <video src="WhatsApp Video 2025-08-24 at 18.46.48_f0c28a93.mp4" class="h-10 w-10" autoplay muted loop playsinline></video>
-          <h1 class="text-2xl font-bold text-gray-800">प्रगति | Pragati</h1>
+          <h1 class="text-2xl font-bold text-gray-800">प्रगति | PRAGATI</h1>
         </div>
         <div id="header-actions" class="hidden items-center space-x-5">
           <button id="profileBtn" class="text-gray-500 hover:text-green-600 transition">
@@ -766,7 +766,10 @@
                     <h4 class="font-semibold text-gray-800">${worker.name}</h4>
                     <p class="text-sm text-gray-600">${skillInfo.name} - <span class="text-yellow-500">${worker.rating} ★</span></p>
                 </div>
-                <button class="btn btn-secondary text-xs py-1 px-2"><i class="fas fa-phone-alt mr-1"></i> Call</button>
+                <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-600 hover:text-white"><i class="fas fa-phone-alt mr-1"></i> Call</button>
+                <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-600 hover:text-white"><i class="fas fa-bell mr-1"></i> Notify</button>
+                <button class="btn btn-secondary text-xs py-1 px-2 hover:bg-green-600 hover:text-white"><i class="fas fa-comment-dots mr-1"></i> Message</button>
+           
             `;
             DOMElements.workerList.appendChild(workerEl);
         });
@@ -821,7 +824,7 @@
         } catch (error) {
             console.error("Gemini API Error:", error);
             DOMElements.chatMessages.removeChild(thinkingIndicator);
-            addMessageToChat('ai', "Sorry, I'm having trouble connecting. Please try again later.");
+            addMessageToChat('ai', `<span style="color:#dc2626;font-weight:bold;"><i class="fas fa-exclamation-triangle mr-2"></i> System Error: API Quota Exceeded!</span>`);
         }
     }
 
