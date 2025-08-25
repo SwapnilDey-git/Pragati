@@ -99,8 +99,8 @@
 <body class="font-sans">
   <div id="bg-video-container">
     <div id="video-overlay"></div>
-    <video autoplay muted loop id="bg-video">
-        <source src="WhatsApp Video 2025-08-24 at 18.15.23_303e5fcd.mp4" type="video/mp4">
+    <video autoplay muted loop id="bg-video" playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-people-working-on-a-construction-site-4203-large.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
   </div>
@@ -110,13 +110,20 @@
     <header class="bg-white/80 backdrop-blur-md p-4 border-b border-gray-200 sticky top-0 z-40">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-3">
-          <video src="WhatsApp Video 2025-08-24 at 18.46.48_f0c28a93.mp4" alt="Pragati Logo" class="h-10 w-10 border border-green-500" autoplay loop muted></video>
+          <video src="https://assets.mixkit.co/videos/preview/mixkit-hands-in-the-shape-of-a-heart-in-front-of-a-sunset-32513-large.mp4" alt="Pragati Logo" class="h-10 w-10 border border-green-500 rounded-lg" style="border-width:1px;" autoplay loop muted playsinline></video>
           <h1 class="text-2xl font-bold text-gray-800">प्रगति | PRAGATI</h1>
         </div>
-        <div id="header-actions" class="hidden items-center space-x-5">
-          <button id="profileBtn" class="text-gray-500 hover:text-green-600 transition">
-            <i class="fas fa-user-circle text-2xl"></i>
-          </button>
+        <div class="flex items-center space-x-5">
+            <div id="header-actions" class="hidden items-center space-x-5">
+                <button id="profileBtn" class="text-gray-500 hover:text-green-600 transition">
+                    <i class="fas fa-user-circle text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex items-center">
+                <select id="languageSelectorHeader" class="form-input text-sm p-2 bg-white/50">
+                    <!-- Language options will be populated by JS -->
+                </select>
+            </div>
         </div>
       </div>
     </header>
@@ -126,13 +133,25 @@
       <!-- Welcome/Login Screen -->
       <div id="loginScreen" class="max-w-md w-full mx-auto card my-auto">
         <div class="text-center mb-8">
-        <video src="WhatsApp Video 2025-08-24 at 18.46.48_f0c28a93.mp4" alt="Pragati Logo" class="h-24 w-24 mx-auto mb-4 border-2 border-green-500 rounded-lg" autoplay loop muted></video>
-          <h2 class="text-3xl font-bold text-gray-800">प्रगति | PRAGATI</h2>
-          <p class="text-gray-600 mt-2 font-semibold text-lg">Right काम, Right Pay</p>
+        <div class="flex justify-center mb-4">
+            <video src="https://assets.mixkit.co/videos/preview/mixkit-hands-in-the-shape-of-a-heart-in-front-of-a-sunset-32513-large.mp4"
+                   alt="Pragati Logo"
+                   class="h-24 w-24 border-2 border-green-500 rounded-lg"
+                   autoplay loop muted playsinline>
+            </video>
+        </div>
+          <h2 class="text-3xl font-bold text-gray-800" data-lang-key="welcome_title">प्रगति | PRAGATI</h2>
+          <p class="text-gray-600 mt-2 font-semibold text-lg" data-lang-key="tagline">Right काम, Right Pay</p>
         </div>
 
         <div class="space-y-4 animate-fade-in">
-            <button id="openAuthModalBtn" class="btn btn-primary w-full text-base py-3">Login or Register</button>
+            <button id="openAuthModalBtn" class="btn btn-primary w-full text-base py-3" data-lang-key="login_register_btn">Login or Register</button>
+            <div class="text-center">
+                <label for="languageSelectorLogin" class="text-sm text-gray-600 mr-2" data-lang-key="choose_language">Language:</label>
+                <select id="languageSelectorLogin" class="form-input inline-block w-auto text-sm p-1">
+                    <!-- Language options will be populated by JS -->
+                </select>
+            </div>
         </div>
       </div>
 
@@ -141,20 +160,20 @@
         <div class="card mb-6">
           <h2 class="text-2xl font-bold mb-6 flex items-center text-gray-800">
             <i class="fas fa-user-tie text-green-500 mr-3"></i>
-            Worker Dashboard
+            <span data-lang-key="worker_dashboard">Worker Dashboard</span>
           </h2>
 
           <div id="checkInSection">
             <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <h3 class="text-lg font-semibold mb-2 text-green-800">Ready for your next job?</h3>
+                <h3 class="text-lg font-semibold mb-2 text-green-800" data-lang-key="ready_for_job">Ready for your next job?</h3>
                 <div class="flex items-center text-gray-600">
                   <i id="locationIcon" class="fas fa-map-marker-alt text-red-500 mr-2"></i>
-                  <span id="locationStatus">Detecting your location...</span>
+                  <span id="locationStatus" data-lang-key="detecting_location">Patia, Bhubaneshwar</span>
                 </div>
             </div>
 
             <div class="mb-6">
-              <p class="mb-3 font-semibold text-gray-700">Select your primary skill:</p>
+              <p class="mb-3 font-semibold text-gray-700" data-lang-key="select_skill">Select your primary skill:</p>
               <div id="skillSelectionContainer" class="grid grid-cols-3 sm:grid-cols-4 gap-3">
                 <!-- Skill Icons will be added by JS -->
               </div>
@@ -162,26 +181,26 @@
 
             <button id="checkInBtn" class="btn btn-primary w-full text-lg py-3" disabled>
               <i class="fas fa-check-circle mr-2"></i>
-              Check In & Be Visible
+              <span data-lang-key="check_in_btn">Check In & Be Visible</span>
             </button>
           </div>
 
           <div id="checkedInSection" class="hidden">
              <div class="bg-green-100 border-l-4 border-green-500 text-green-800 p-4 rounded-md mb-6" role="alert">
-              <p class="font-bold">You are checked in!</p>
-              <p id="checkedInDetails" class="text-sm">You are now visible to nearby contractors.</p>
+              <p class="font-bold" data-lang-key="checked_in_status">You are checked in!</p>
+              <p id="checkedInDetails" class="text-sm" data-lang-key="visible_to_contractors">You are now visible to nearby contractors.</p>
             </div>
 
             <div class="mb-6">
-              <h3 class="text-xl font-semibold mb-4 text-gray-800">Available Jobs Nearby</h3>
+              <h3 class="text-xl font-semibold mb-4 text-gray-800" data-lang-key="jobs_nearby">Available Jobs Nearby</h3>
               <div id="jobListWorker" class="space-y-4">
-                <p class="text-gray-500 text-center py-4">No jobs posted in your area yet...</p>
+                <p class="text-gray-500 text-center py-4" data-lang-key="no_jobs_posted">No jobs posted in your area yet...</p>
               </div>
             </div>
 
             <button id="checkOutBtn" class="btn btn-danger w-full text-lg py-3">
               <i class="fas fa-sign-out-alt mr-2"></i>
-              Check Out
+              <span data-lang-key="check_out_btn">Check Out</span>
             </button>
           </div>
         </div>
@@ -194,42 +213,42 @@
                 <div class="card">
                     <h2 class="text-2xl font-bold mb-4 flex items-center text-gray-800">
                         <i class="fas fa-bullhorn text-green-500 mr-3"></i>
-                        Broadcast a Job
+                        <span data-lang-key="broadcast_job">Broadcast a Job</span>
                     </h2>
                     <div class="mb-4">
-                      <label for="jobDescription" class="block mb-2 font-semibold text-gray-700">Job Details</label>
-                      <textarea id="jobDescription" class="form-input" rows="3" placeholder="e.g., Need 5 masons for a 3-day construction project."></textarea>
+                      <label for="jobDescription" class="block mb-2 font-semibold text-gray-700" data-lang-key="job_details">Job Details</label>
+                      <textarea id="jobDescription" class="form-input" rows="3" data-lang-key-placeholder="job_details_placeholder" placeholder="e.g., Need 5 masons for a 3-day construction project."></textarea>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label for="jobPayment" class="block mb-2 font-semibold text-gray-700">Payment (per day)</label>
+                            <label for="jobPayment" class="block mb-2 font-semibold text-gray-700" data-lang-key="payment_per_day">Payment (per day)</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">₹</span>
-                                <input type="number" id="jobPayment" class="form-input pl-8" placeholder="Amount">
+                                <input type="number" id="jobPayment" class="form-input pl-8" data-lang-key-placeholder="amount_placeholder" placeholder="Amount">
                             </div>
                         </div>
                         <div>
-                            <label for="jobTypeSelect" class="block mb-2 font-semibold text-gray-700">Job Type</label>
+                            <label for="jobTypeSelect" class="block mb-2 font-semibold text-gray-700" data-lang-key="job_type">Job Type</label>
                             <select id="jobTypeSelect" class="form-input">
-                                <option value="daily">Daily</option>
-                                <option value="contract">Contract</option>
-                                <option value="emergency">Emergency</option>
+                                <option value="daily" data-lang-key="job_type_daily">Daily</option>
+                                <option value="contract" data-lang-key="job_type_contract">Contract</option>
+                                <option value="emergency" data-lang-key="job_type_emergency">Emergency</option>
                             </select>
                         </div>
                     </div>
                     <button id="broadcastJobBtn" class="btn btn-primary w-full text-lg py-3">
-                      Broadcast to Nearby Workers
+                      <span data-lang-key="broadcast_btn">Broadcast to Nearby Workers</span>
                     </button>
                 </div>
             </div>
             <div class="lg:col-span-1">
                 <div class="card sticky top-24">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Available Workers</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800" data-lang-key="available_workers">Available Workers</h3>
                     <div id="workerFilters" class="flex flex-wrap gap-2 mb-4">
                       <!-- Filter buttons will be added by JS -->
                     </div>
                     <div id="workerList" class="space-y-3 h-96 overflow-y-auto pr-2">
-                      <p class="text-gray-500 text-center py-4">No workers available right now.</p>
+                      <p class="text-gray-500 text-center py-4" data-lang-key="no_workers_available">No workers available right now.</p>
                     </div>
                 </div>
             </div>
@@ -243,7 +262,7 @@
                     <button id="backFromJobsBtn" class="btn btn-secondary mr-4"><i class="fas fa-arrow-left"></i></button>
                     <h2 class="text-2xl font-bold flex items-center text-gray-800">
                         <i class="fas fa-briefcase text-green-500 mr-3"></i>
-                        All Available Jobs
+                        <span data-lang-key="all_jobs">All Available Jobs</span>
                     </h2>
                 </div>
                 <div id="jobListPublic" class="space-y-4">
@@ -257,15 +276,31 @@
             <div class="card">
                 <div class="flex items-center mb-6">
                      <button id="backFromProfileBtn" class="btn btn-secondary mr-4"><i class="fas fa-arrow-left"></i></button>
-                     <h2 class="text-2xl font-bold text-gray-800">Profile</h2>
+                     <h2 class="text-2xl font-bold text-gray-800" data-lang-key="profile">Profile</h2>
                 </div>
                 <div class="text-center">
                     <i class="fas fa-user-circle text-6xl mb-4 text-green-500"></i>
                     <h2 id="profileName" class="text-3xl font-bold mb-2 text-gray-800">User Name</h2>
                     <p id="profileType" class="text-green-600 capitalize mb-6">User Type</p>
+                    
+                    <div class="text-left space-y-4 border-t border-b py-4 my-6">
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-gray-600" data-lang-key="jobs_completed">Jobs Completed:</span>
+                            <span id="jobsCompleted" class="font-bold">12</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-gray-600" data-lang-key="total_earnings">Total Earnings:</span>
+                            <span id="totalEarnings" class="font-bold">₹8,500</span>
+                        </div>
+                         <div class="flex justify-between">
+                            <span class="font-semibold text-gray-600" data-lang-key="member_since">Member Since:</span>
+                            <span id="memberSince" class="font-bold">Aug 2025</span>
+                        </div>
+                    </div>
+
                     <button id="logoutBtn" class="btn btn-danger w-full">
                         <i class="fas fa-sign-out-alt mr-2"></i>
-                        Logout
+                        <span data-lang-key="logout">Logout</span>
                     </button>
                 </div>
             </div>
@@ -276,13 +311,13 @@
             <div class="card flex flex-col h-[80vh]">
                 <div class="flex items-center mb-4">
                     <button id="backFromChatbotBtn" class="btn btn-secondary mr-4"><i class="fas fa-arrow-left"></i></button>
-                    <h2 class="text-2xl font-bold text-gray-800 flex items-center"><i class="fas fa-robot text-green-500 mr-3"></i>AI Assistant</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 flex items-center"><i class="fas fa-robot text-green-500 mr-3"></i><span data-lang-key="ai_sathi">AI Sathi</span></h2>
                 </div>
                 <div id="chatMessages" class="flex-grow bg-gray-100 rounded-lg p-4 overflow-y-auto space-y-4">
                     <!-- Chat messages will appear here -->
                 </div>
                 <div class="mt-4 flex">
-                    <input type="text" id="chatInput" class="form-input flex-grow" placeholder="Ask for help with a small task...">
+                    <input type="text" id="chatInput" class="form-input flex-grow" data-lang-key-placeholder="ask_for_help" placeholder="Ask for help with a small task...">
                     <button id="chatSendBtn" class="btn btn-primary ml-2"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
@@ -295,19 +330,19 @@
         <div class="flex justify-around">
           <button id="homeBtn" class="nav-btn flex flex-col items-center text-green-600">
             <i class="fas fa-home text-xl"></i>
-            <span class="text-xs font-semibold">Home</span>
+            <span class="text-xs font-semibold" data-lang-key="home">Home</span>
           </button>
           <button id="jobsBtn" class="nav-btn flex flex-col items-center text-gray-500 hover:text-green-600">
             <i class="fas fa-briefcase text-xl"></i>
-            <span class="text-xs">Jobs</span>
+            <span class="text-xs" data-lang-key="jobs">Jobs</span>
           </button>
           <button id="chatbotBtn" class="nav-btn flex flex-col items-center text-gray-500 hover:text-green-600">
             <i class="fas fa-robot text-xl"></i>
-            <span class="text-xs">AI Help</span>
+            <span class="text-xs" data-lang-key="ai_help">AI Help</span>
           </button>
           <button id="profileFooterBtn" class="nav-btn flex flex-col items-center text-gray-500 hover:text-green-600">
             <i class="fas fa-user-circle text-xl"></i>
-            <span class="text-xs">Profile</span>
+            <span class="text-xs" data-lang-key="profile">Profile</span>
           </button>
         </div>
       </div>
@@ -320,42 +355,52 @@
                 <!-- Login Form (Front) -->
                 <div class="flip-card-front card">
                     <button id="closeAuthModalBtnLogin" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10"><i class="fas fa-times text-xl"></i></button>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Login to your Account</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6" data-lang-key="login_title">Login to your Account</h2>
                     <div class="space-y-4">
                         <div>
-                            <label for="loginNameInput" class="block mb-2 font-semibold text-gray-700">Your Name</label>
-                            <input type="text" id="loginNameInput" class="form-input" placeholder="Enter your full name">
+                            <label for="loginNameInput" class="block mb-2 font-semibold text-gray-700" data-lang-key="your_name">Your Name</label>
+                            <input type="text" id="loginNameInput" class="form-input" data-lang-key-placeholder="name_placeholder" placeholder="Enter your full name">
                         </div>
-                        <button id="loginSubmitBtn" class="btn btn-primary w-full text-base py-3">Login</button>
+                        <button id="loginSubmitBtn" class="btn btn-primary w-full text-base py-3" data-lang-key="login">Login</button>
                         <div class="relative flex py-2 items-center">
                             <div class="flex-grow border-t border-gray-300"></div>
-                            <span class="flex-shrink mx-4 text-gray-500">OR</span>
+                            <span class="flex-shrink mx-4 text-gray-500" data-lang-key="or">OR</span>
                             <div class="flex-grow border-t border-gray-300"></div>
                         </div>
-                        <button id="googleLoginBtn" class="btn btn-secondary w-full text-base py-3"><i class="fab fa-google mr-2"></i>Login with Google</button>
-                        <p class="text-center text-sm text-gray-600">Don't have an account? <a href="#" id="showRegister" class="font-semibold text-green-600 hover:underline">Register</a></p>
+                        <button id="googleLoginBtn" class="btn btn-secondary w-full text-base py-3"><i class="fab fa-google mr-2"></i><span data-lang-key="google_login">Login with Google</span></button>
+                        <p class="text-center text-sm text-gray-600" data-lang-key="no_account">Don't have an account? <a href="#" id="showRegister" class="font-semibold text-green-600 hover:underline" data-lang-key="register_link">Register</a></p>
                     </div>
                 </div>
                 <!-- Register Form (Back) -->
                 <div class="flip-card-back card">
                     <button id="closeAuthModalBtnRegister" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10"><i class="fas fa-times text-xl"></i></button>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Create a New Account</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6" data-lang-key="register_title">Create a New Account</h2>
                     <div class="space-y-4">
                         <div>
-                            <label for="registerNameInput" class="block mb-2 font-semibold text-gray-700">Your Name</label>
-                            <input type="text" id="registerNameInput" class="form-input" placeholder="Enter your full name">
+                            <label for="registerNameInput" class="block mb-2 font-semibold text-gray-700" data-lang-key="your_name">Your Name</label>
+                            <input type="text" id="registerNameInput" class="form-input" data-lang-key-placeholder="name_placeholder" placeholder="Enter your full name">
                         </div>
                         <div>
-                            <label for="registerUserTypeSelect" class="block mb-2 font-semibold text-gray-700">I am a:</label>
+                            <label for="registerUserTypeSelect" class="block mb-2 font-semibold text-gray-700" data-lang-key="i_am_a">I am a:</label>
                             <select id="registerUserTypeSelect" class="form-input">
-                                <option value="worker">Worker</option>
-                                <option value="contractor">Contractor</option>
+                                <option value="worker" data-lang-key="worker">Worker</option>
+                                <option value="contractor" data-lang-key="contractor">Contractor</option>
                             </select>
                         </div>
-                        <button id="registerSubmitBtn" class="btn btn-primary w-full text-base py-3">Register</button>
-                        <p class="text-center text-sm text-gray-600">Already have an account? <a href="#" id="showLogin" class="font-semibold text-green-600 hover:underline">Login</a></p>
+                        <button id="registerSubmitBtn" class="btn btn-primary w-full text-base py-3" data-lang-key="register">Register</button>
+                        <p class="text-center text-sm text-gray-600" data-lang-key="have_account">Already have an account? <a href="#" id="showLogin" class="font-semibold text-green-600 hover:underline" data-lang-key="login_link">Login</a></p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Details Modal -->
+    <div id="jobDetailsModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden animate-fade-in">
+        <div class="card max-w-lg w-full relative">
+            <button id="closeJobDetailsModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button>
+            <div id="jobDetailsContent">
+                <!-- Job details will be rendered here by JS -->
             </div>
         </div>
     </div>
@@ -380,9 +425,9 @@
     ];
 
     const mockJobs = [
-        { _id: 'j1', title: "Mason needed for wall", contractor: "ABC Constructions", payment: "₹800/day", type: "daily" },
-        { _id: 'j2', title: "Urgent pipe repair", contractor: "Home Services Ltd.", payment: "₹1200", type: "emergency" },
-        { _id: 'j3', title: "Full house painting contract", contractor: "Creative Painters", payment: "₹25000", type: "contract" },
+        { _id: 'j1', title: "Mason needed for wall", contractor: "ABC Constructions", payment: "₹800/day", type: "daily", description: "Looking for an experienced mason for a 3-day residential wall construction project. Must have own tools.", location: "Patia, Bhubaneswar" },
+        { _id: 'j2', title: "Urgent pipe repair", contractor: "Home Services Ltd.", payment: "₹1200", type: "emergency", description: "Emergency leak in a kitchen sink pipe. Immediate availability required.", location: "KIIT Square, Bhubaneswar" },
+        { _id: 'j3', title: "Full house painting contract", contractor: "Creative Painters", payment: "₹25000", type: "contract", description: "Seeking a team of painters for a full 2BHK apartment interior painting contract. All materials will be provided. Project duration is 1 week.", location: "Jaydev Vihar, Bhubaneswar" },
     ];
 
     // --- APPLICATION LOGIC ---
@@ -448,6 +493,9 @@
         profileFooterBtn: document.getElementById('profileFooterBtn'),
         profileName: document.getElementById('profileName'),
         profileType: document.getElementById('profileType'),
+        jobsCompleted: document.getElementById('jobsCompleted'),
+        totalEarnings: document.getElementById('totalEarnings'),
+        memberSince: document.getElementById('memberSince'),
         logoutBtn: document.getElementById('logoutBtn'),
         backFromJobsBtn: document.getElementById('backFromJobsBtn'),
         backFromProfileBtn: document.getElementById('backFromProfileBtn'),
@@ -456,6 +504,9 @@
         chatMessages: document.getElementById('chatMessages'),
         chatInput: document.getElementById('chatInput'),
         chatSendBtn: document.getElementById('chatSendBtn'),
+        jobDetailsModal: document.getElementById('jobDetailsModal'),
+        jobDetailsContent: document.getElementById('jobDetailsContent'),
+        closeJobDetailsModalBtn: document.getElementById('closeJobDetailsModalBtn'),
     };
 
     function initApp() {
@@ -597,6 +648,9 @@
         DOMElements.chatbotBtn.addEventListener('click', () => showScreen('chatbot'));
         DOMElements.chatSendBtn.addEventListener('click', sendMessage);
         DOMElements.chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+        DOMElements.closeJobDetailsModalBtn.addEventListener('click', () => closeModal(DOMElements.jobDetailsModal));
+        DOMElements.jobDetailsModal.addEventListener('click', (e) => { if(e.target === DOMElements.jobDetailsModal) closeModal(DOMElements.jobDetailsModal); });
     }
     
     function openModal(modal) {
@@ -652,7 +706,7 @@
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 appState.workerLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
-                DOMElements.locationStatus.textContent = 'Location detected successfully!';
+                DOMElements.locationStatus.textContent = 'Patia, Bhubaneshwar';
                 DOMElements.locationIcon.classList.remove('animate-pulse', 'text-red-500');
                 DOMElements.locationIcon.classList.add('text-green-500');
                 if (appState.selectedSkill) DOMElements.checkInBtn.disabled = false;
@@ -700,16 +754,59 @@
                 <p class="text-sm text-gray-600 mb-3">Posted by: ${job.contractor}</p>
                 <div class="flex justify-between items-center text-sm">
                     <span class="font-semibold text-green-600 text-lg">${job.payment}</span>
-                    <button class="btn btn-secondary text-xs py-1 px-3">View Details</button>
+                    <button class="btn btn-secondary text-xs py-1 px-3 view-details-btn" data-job-id="${job._id}">View Details</button>
                 </div>`;
             container.appendChild(jobEl);
         });
+
+        document.querySelectorAll('.view-details-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const jobId = e.currentTarget.getAttribute('data-job-id');
+                const job = mockJobs.find(j => j._id === jobId);
+                if (job) {
+                    renderJobDetails(job);
+                    openModal(DOMElements.jobDetailsModal);
+                }
+            });
+        });
     }
     
+    function renderJobDetails(job) {
+        DOMElements.jobDetailsContent.innerHTML = `
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">${job.title}</h2>
+            <p class="text-sm text-gray-500 mb-4">Posted by <span class="font-semibold">${job.contractor}</span></p>
+            <div class="space-y-4 border-t border-b py-4 my-4">
+                <div class="flex justify-between">
+                    <span class="font-semibold text-gray-600">Payment:</span>
+                    <span class="font-bold text-green-600">${job.payment}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-semibold text-gray-600">Job Type:</span>
+                    <span class="font-bold capitalize">${job.type}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-semibold text-gray-600">Location:</span>
+                    <span class="font-bold">${job.location}</span>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-semibold text-gray-800 mb-2">Description</h3>
+                <p class="text-gray-600">${job.description}</p>
+            </div>
+            <div class="mt-6 flex space-x-2">
+                <button class="btn btn-primary w-full"><i class="fas fa-phone-alt mr-2"></i>Contact Contractor</button>
+                <button class="btn btn-secondary w-full"><i class="fas fa-map-marker-alt mr-2"></i>Get Directions</button>
+            </div>
+        `;
+    }
+
     function renderProfile() {
         if (appState.currentUser) {
             DOMElements.profileName.textContent = appState.currentUser.name;
             DOMElements.profileType.textContent = appState.currentUser.userType;
+            DOMElements.jobsCompleted.textContent = '12';
+            DOMElements.totalEarnings.textContent = '₹8,500';
+            DOMElements.memberSince.textContent = 'Aug 2025';
         }
     }
 
@@ -831,7 +928,7 @@
         } catch (error) {
             console.error("Gemini API Error:", error);
             DOMElements.chatMessages.removeChild(thinkingIndicator);
-            addMessageToChat('ai', "Sorry, I'm having trouble connecting. Please try again later.");
+            addMessageToChat('ai', "<span class='text-red-600 font-semibold'>System:</span> Sorry, API quota exceeded. Please try again later.");
         }
     }
 
@@ -846,7 +943,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
-  
+    
         if (!response.ok) {
             throw new Error(`API request failed with status ${response.status}`);
         }
@@ -865,4 +962,3 @@
   </div>
 </body>
 </html>
-
